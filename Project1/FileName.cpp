@@ -55,13 +55,13 @@ void Timer(int value) {
     glutTimerFunc(10, Timer, 0);
     glutPostRedisplay();
 
-    static int currentBall = 0;
+    static int currentBall = 4;
     static bool ball4Moving = true;
     static bool ball0Moving = true;
 
 
     // Update ball positions
-    if (currentBall == 4) {
+    if (currentBall == 0) {
         if (ball4Moving) {
            ballPositions[0] -= ballSpeed * -cos(ballAngle * 3.14159 / 180);
             if (ballPositions[0] >= 0.0f) {
@@ -69,7 +69,7 @@ void Timer(int value) {
                 ballPositions[0] = 0.0f;
                 ball4Moving = false;
                 ball0Moving = true;
-                currentBall = 0;
+                currentBall = 4;
             }
         }
         else {
@@ -83,7 +83,7 @@ void Timer(int value) {
             }
         }
     }
-    else if (currentBall == 0  ) {
+    else if (currentBall == 4  ) {
         if (!ball0Moving) {
 
             ballPositions[4] -= ballSpeed * cos(ballAngle * 3.14159 / 180);
@@ -92,7 +92,7 @@ void Timer(int value) {
                 ballPositions[4] = 0.0f;
                 ball4Moving = false;
                 ball0Moving = true;
-                currentBall = 4;
+                currentBall = 0;
             }
         }
         else {
